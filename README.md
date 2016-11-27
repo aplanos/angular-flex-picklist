@@ -5,10 +5,10 @@ An object oriented picklist with filtering for angular
 * angular-flex-picklist zero and higher _requires_ Angular 1.4.x or higher and it has been tested with Angular 1.4.7.
 
 ## Bootstrap Requirements
-* angular-flex-picklist _requires_ Bootstrap CSS version 3.x or higher
+* angular-flex-picklist zero and higher _requires_ Bootstrap CSS version 3.x or higher
 
 ## SimplePagination Requirements
-* angular-flex-picklist _requires_ ng-simplePagination version 1 or higher
+* angular-flex-picklist zero and higher _requires_ ng-simplePagination version 1 or higher
 
 ## Using angular-flex-picklist
 
@@ -53,11 +53,15 @@ app.controller('AppController', function($scope){
 Basic options
 
 ```html
-<flex-picklist search-place-holder="Search" target="itemsTarget" source="itemsSource" />
+<flex-picklist target="itemsTarget" source="itemsSource" />
 ```
 
 Extended Options
 
 ```html
-<flex-picklist search-place-holder="Search" target="itemsTarget" source="itemsSource" show-move-all="true" show-delete-button="true"/>
+<flex-picklist search-place-holder="Search" 
+			   target="itemsTarget" 
+			   source="itemsSource" 
+			   show-move-all="true" 
+			   show-delete-button="true"/>
 ```
