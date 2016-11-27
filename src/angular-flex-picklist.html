@@ -1,0 +1,78 @@
+﻿<div class="container-fluid" ng-cloak>
+    <div class="row">
+        <!--unselected data-->
+        <div class="col-xs-5">
+            <input placeholder="{{ searchPlaceHolder }}" type="text" class="form-control" ng-model="search.optionsLeftFilter" ng-change="onLeftItemFilterChange()"
+                   style="margin-bottom: 10px;" />
+            <div class="scroll-body-200">
+                <div ng-repeat="item in filteredOptions = (source | filter:filterLeftItems) | filter:filterLeftItems | startFrom: sourcePagination.page * sourcePagination.perPage | limitTo: sourcePagination.perPage | filter: filterLeftItems">
+                    <a class="list-group-item" ng-click="selectLeftItem(item)" ng-class="{selected: item.id == selectedLeftItem.id}">
+                        <h4 class="list-group-item-heading">{{item.title}}</h4>
+                        <p class="list-group-item-text">{{item.description}}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--navigation buttons-->
+        <div class="col-xs-1 v-center" style="margin-top: 75px;">
+            <div class="btn-group" ng-click="moveItemRight()">
+                <div title="Move item to the right" class="btn btn-default right-arrow"><i class="glyphicon glyphicon-step-forward"></i></div>
+            </div>
+			<div class="btn-group" ng-click="moveAllItemsRight()" ng-show="showMoveAll">
+                <div title="Move all items to the right" class="btn btn-default right-arrow"><i class="glyphicon glyphicon glyphicon-fast-forward"></i></div>
+            </div>
+			<div class="btn-group" ng-click="moveItemLeft()">
+                <div title="Move item to the left" class="btn btn-default left-arrow"><i class="glyphicon glyphicon-step-backward"></i></div>
+            </div>
+			<div class="btn-group" ng-click="moveAllItemsLeft()" ng-show="showMoveAll">
+                <div title="Move all Items to the left" class="btn btn-default right-arrow"><i class="glyphicon glyphicon glyphicon-fast-backward"></i></div>
+            </div>
+        </div>
+
+        <!--selected data-->
+        <div class="col-xs-5">
+            <input placeholder="{{ searchPlaceHolder }}" type="text" class="form-control" ng-model="search.optionsRightFilter" ng-change="onRightItemFilterChange()"
+                   style="margin-bottom: 10px;" />
+            <div class="scroll-body-200">
+                <div ng-repeat="item in filteredSelected = (target | filter:filterRightItems) | filter:filterRightItems | startFrom: targetPagination.page * targetPagination.perPage | limitTo: targetPagination.perPage | filter: filterRightItems">
+                    <a class="list-group-item" ng-click="selectRightItem(item)" ng-class="{selected: item.id == selectedRightItem.id}">
+                        <div class="btn-group" style="float: right;" ng-click="deleteLeftItem(item)" ng-show="showDeleteButton">
+                            <span title="delete item" data-original-itemName="delete item" class="glyphicon glyphicon-remove-circle  delete-item-icon"></span>
+                        </div>
+                        <h4 class="list-group-item-heading">{{item.title}}</h4>
+                        <p class="list-group-item-text">{{item.description}}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-5">
+            <div style="text-align:center">
+                <ul class="pagination">
+                    <li><a href="" ng-click="sourcePagination.prevPage()">&laquo;</a></li>
+                    <li ng-repeat="n in [] | range: sourcePagination.numPages" ng-class="{active: n == sourcePagination.page}">
+                        <a href="" ng-click="sourcePagination.toPageId(n)">{{n + 1}}</a>
+                    </li>
+                    <li><a href="" ng-click="sourcePagination.nextPage()">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-1" style="min-width:70px;">
+        </div>
+        <div class="col-xs-5">
+            <div style="text-align:center">
+                <ul class="pagination">
+                    <li><a href="" ng-click="targetPagination.prevPage()">&laquo;</a></li>
+                    <li ng-repeat="n in [] | range: targetPagination.numPages" ng-class="{active: n == targetPagination.page}">
+                        <a href="" ng-click="targetPagination.toPageId(n)">{{n + 1}}</a>
+                    </li>
+                    <li><a href="" ng-click="targetPagination.nextPage()">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
