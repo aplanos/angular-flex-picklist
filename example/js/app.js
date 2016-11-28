@@ -1,4 +1,5 @@
 (function () {
+	
     var app = angular.module('app', ['angularflexPicklist']);
 	
 	app.controller('AppController', function($scope){
