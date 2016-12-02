@@ -53,7 +53,7 @@ app.controller('AppController', function($scope){
 Basic options
 
 ```html
-<flex-picklist target="itemsTarget" source="itemsSource" />
+<flex-picklist target="itemsTarget" source="itemsSource"></flex-picklist>
 ```
 
 Extended Options
@@ -63,5 +63,6 @@ Extended Options
 			   target="itemsTarget" 
 			   source="itemsSource" 
 			   show-move-all="true" 
-			   show-delete-button="true"/>
+			   show-delete-button="true">
+			   </flex-picklist>
 ```
